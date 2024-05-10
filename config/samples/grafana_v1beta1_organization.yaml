@@ -1,0 +1,10 @@
+apiVersion: grafana.integreatly.org/v1beta1
+kind: GrafanaOrganization
+metadata:
+  name: otganization-sample
+spec:
+  instanceSelector:
+    matchLabels:
+      dashboards: "grafana"
+  organization:
+    name: "my-org"

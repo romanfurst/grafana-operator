@@ -61,6 +61,13 @@ var (
 		Name:      "initial_sync_duration",
 		Help:      "time in ms to sync folders after operator restart",
 	})
+
+	InitialOrganisationsSyncDuration = prometheus.NewGauge(prometheus.GaugeOpts{
+		Namespace: "grafana_operator",
+		Subsystem: "organizations",
+		Name:      "initial_sync_duration",
+		Help:      "time in ms to sync organizations after operator restart",
+	})
 )
 
 func init() {
@@ -71,4 +78,5 @@ func init() {
 	metrics.Registry.MustRegister(InitialDashboardSyncDuration)
 	metrics.Registry.MustRegister(InitialDatasourceSyncDuration)
 	metrics.Registry.MustRegister(InitialFoldersSyncDuration)
+	metrics.Registry.MustRegister(InitialOrganisationsSyncDuration)
 }

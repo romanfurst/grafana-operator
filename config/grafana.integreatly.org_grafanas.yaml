@@ -8954,6 +8954,10 @@ spec:
                 items:
                   type: string
                 type: array
+              organizations:
+                items:
+                  type: string
+                type: array
               lastMessage:
                 type: string
               stage:
