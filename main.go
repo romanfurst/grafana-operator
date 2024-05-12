@@ -249,6 +249,14 @@ func main() {
 		setupLog.Error(err, "unable to create controller", "controller", "GrafanaOrganization")
 		os.Exit(1)
 	}
+	if err = (&controllers.GrafanaUserReconciler{
+		Client: mgr.GetClient(),
+		Scheme: mgr.GetScheme(),
+		Log:    ctrl.Log.WithName("UserReconciler"),
+	}).SetupWithManager(mgr, ctx); err != nil {
+		setupLog.Error(err, "unable to create controller", "controller", "GrafanaUser")
+		os.Exit(1)
+	}
 	//+kubebuilder:scaffold:builder
 
 	if err := mgr.AddHealthzCheck("healthz", healthz.Ping); err != nil {

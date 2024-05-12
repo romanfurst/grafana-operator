@@ -1,0 +1,14 @@
+apiVersion: grafana.integreatly.org/v1beta1
+kind: GrafanaUser
+metadata:
+  name: user-sample
+spec:
+  instanceSelector:
+    matchLabels:
+      dashboards: "grafana"
+  user:
+    name: user1
+    email: user@graf.com
+    login: user
+    password: userpassword
+

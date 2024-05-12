@@ -8958,6 +8958,10 @@ spec:
                 items:
                   type: string
                 type: array
+              users:
+                items:
+                  type: string
+                type: array
               lastMessage:
                 type: string
               stage:
