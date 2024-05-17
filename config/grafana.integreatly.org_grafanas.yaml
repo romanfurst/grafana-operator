@@ -8962,6 +8962,10 @@ spec:
                 items:
                   type: string
                 type: array
+              userroles:
+                items:
+                  type: string
+                type: array
               lastMessage:
                 type: string
               stage:

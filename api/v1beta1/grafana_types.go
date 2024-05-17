@@ -121,6 +121,7 @@ type GrafanaStatus struct {
 	Version       string                 `json:"version,omitempty"`
 	Organizations NamespacedResourceList `json:"organizations,omitempty"`
 	Users         NamespacedResourceList `json:"users,omitempty"`
+	UserRoles     NamespacedResourceList `json:"userroles,omitempty"`
 }
 
 //+kubebuilder:object:root=true

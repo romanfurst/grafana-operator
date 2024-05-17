@@ -1,0 +1,13 @@
+apiVersion: grafana.integreatly.org/v1beta1
+kind: GrafanaUserRole
+metadata:
+  name: user-sample
+spec:
+  instanceSelector:
+    matchLabels:
+      dashboards: "grafana"
+  userrole:
+    loginOrEmail: user1
+    orgName: org1
+    role: Viewer
+
