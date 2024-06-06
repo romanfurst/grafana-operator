@@ -1,5 +1,21 @@
 <div align="center">
 
+# CodeNow Grafana Operator
+</div>
+
+Tthis is fork of origin [Grafana Operator](https://github.com/grafana/grafana-operator) with following implementation improvements:   
+
+- handling organizations with CRD
+- create datasource in specific organization
+- handling users with CRD
+- handling user's roles in organization(s) with CRD
+- build with CodeNow pipeline or locally run `make cn-build-and-push-docker IMAGE_VERSION=X.X.X`
+___
+
+
+
+<div align="center">
+
 # Grafana Operator
 
 [![Grafana](https://img.shields.io/badge/grafana-%23F46800.svg?&logo=grafana&logoColor=white)](https://grafana.com/)

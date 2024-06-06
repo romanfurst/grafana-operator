@@ -4,7 +4,7 @@ RUN apt update && update-ca-certificates --fresh && apt -y install build-essenti
 
 WORKDIR /go/src/build
 COPY ./ /go/src/build
-RUN CGO_ENABLED=0 go build -ldflags "-s -w"
+RUN CGO_ENABLED=0 go build -ldflags "-s -w" -buildvcs=false
 
 FROM debian:bullseye-slim
 

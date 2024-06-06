@@ -28,11 +28,11 @@ env: []
 
 image:
   # -- grafana operator image repository
-  repository: ghcr.io/grafana/grafana-operator
+  repository: codenow-codenow-data-plane-hosted-docker.jfrog.io/codenow/grafana/grafana-operator
   # -- The image pull policy to use in grafana operator container
   pullPolicy: IfNotPresent
   # -- Overrides the image tag whose default is the chart appVersion.
-  tag: ""
+  tag: ${project.version}
 
 # -- image pull secrets
 imagePullSecrets: []

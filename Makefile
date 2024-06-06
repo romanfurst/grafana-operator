@@ -404,3 +404,34 @@ API_REF_GEN=$(GOBIN)/crdoc
 else
 API_REF_GEN=$(shell which crdoc)
 endif
+
+.PHONY: cn-build-and-push-docker
+cn-build-and-push-docker:
+	@echo "build amd64 docker container"
+	tar -ch . | \
+	docker buildx build - \
+	--platform linux/amd64 \
+	--load \
+	--tag codenow-codenow-data-plane.jfrog.io/codenow/grafana/grafana-operator:$(IMAGE_VERSION)-amd64 \
+	$(DOCKER_BUILD_ARGS)
+
+	@echo "build arm64 docker container"
+	tar -ch . | \
+	docker buildx build - \
+	--platform linux/arm64 \
+	--load \
+	--tag codenow-codenow-data-plane.jfrog.io/codenow/grafana/grafana-operator:$(IMAGE_VERSION)-arm64 \
+	$(DOCKER_BUILD_ARGS)
+
+	@echo "push docker images"
+	tar -ch . | \
+	docker push codenow-codenow-data-plane.jfrog.io/codenow/grafana/grafana-operator:$(IMAGE_VERSION)-amd64 && \
+	docker push codenow-codenow-data-plane.jfrog.io/codenow/grafana/grafana-operator:$(IMAGE_VERSION)-arm64
+
+	@echo "create docker manifest"
+	tar -ch . | \
+	docker manifest create \
+	codenow-codenow-data-plane.jfrog.io/codenow/grafana/grafana-operator:$(IMAGE_VERSION) \
+	--amend codenow-codenow-data-plane.jfrog.io/codenow/grafana/grafana-operator:$(IMAGE_VERSION)-amd64 \
+	--amend codenow-codenow-data-plane.jfrog.io/codenow/grafana/grafana-operator:$(IMAGE_VERSION)-arm64 && \
+	docker manifest push codenow-codenow-data-plane.jfrog.io/codenow/grafana/grafana-operator:$(IMAGE_VERSION)
